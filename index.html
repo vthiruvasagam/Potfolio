@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiruvasagam V - IT Student & Aspiring Software Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        .dark .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-card border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center space-x-2 group">
+                    <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white font-bold flex items-center justify-center text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                        T
+                    </span>
+                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                        Thiruvasagam<span class="text-sky-500">.V</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="#home" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Projects</a>
+                    <a href="#education" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Education</a>
+                    <a href="#contact" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions (Theme Toggle + Contact Button) -->
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+                    </button>
+
+                    <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-semibold rounded-lg text-white bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all duration-200">
+                        Contact Me
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg">
+            <a href="#home" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Home</a>
+            <a href="#about" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">About</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Skills</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Projects</a>
+            <a href="#education" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Education</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 text-sm font-semibold">
+                        <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+                        Information Technology Student | Aspiring Software Engineer
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Thiruvasagam V</span>
+                    </h1>
+
+                    <p class="text-xl sm:text-2xl font-medium text-slate-600 dark:text-slate-300">
+                        I am an <span id="typingText" class="text-sky-500 dark:text-sky-400 font-bold typing-cursor"></span>
+                    </p>
+
+                    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Enthusiastic Information Technology student passionate about software development, web engineering, and building user-focused applications. Creator of the <strong>Smart Food Tourism</strong> project.
+                    </p>
+
+                    <!-- Buttons & Social Links -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl text-white font-semibold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 transition-all duration-200">
+                            Explore Projects <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                        <a href="profile.jpg" download="Thiruvasagam_V_Profile.jpg" class="px-6 py-3.5 rounded-xl font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 transition-all duration-200 flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download Photo
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center lg:justify-start space-x-5 pt-6 text-slate-500 dark:text-slate-400">
+                        <a href="https://github.com" target="_blank" class="hover:text-sky-500 dark:hover:text-sky-400 text-2xl transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-sky-500 dark:hover:text-sky-400 text-2xl transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="mailto:vijaythiruvasagam007@gmail.com" class="hover:text-sky-500 dark:hover:text-sky-400 text-2xl transition-colors" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="hover:text-sky-500 dark:hover:text-sky-400 text-2xl transition-colors" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Photo Container -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-64 sm:w-80 lg:w-96 aspect-square">
+                        <!-- Background Decorative Shapes -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-sky-500 to-indigo-600 rounded-3xl rotate-6 blur-md opacity-30 dark:opacity-40 animate-pulse"></div>
+                        <div class="absolute inset-0 bg-gradient-to-bl from-purple-500 to-sky-400 rounded-3xl -rotate-3 blur-md opacity-30 dark:opacity-40"></div>
+                        
+                        <!-- Profile Image Frame -->
+                        <div class="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white dark:border-slate-900 shadow-2xl bg-slate-200 dark:bg-slate-800">
+                            <img src="profile.jpg" alt="Thiruvasagam V - Information Technology Student" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-4 -left-4 glass-card p-4 rounded-2xl shadow-xl flex items-center space-x-3 border">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center font-bold text-xl">
+                                🎓
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Status</p>
+                                <p class="text-sm font-bold text-slate-800 dark:text-slate-100">IT Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-slate-100/60 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-2">About Me</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Information Technology Student</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Info text -->
+                <div class="space-y-6 text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                    <p>
+                        Hello! I'm <strong class="text-slate-900 dark:text-white">Thiruvasagam V</strong>, an enthusiastic <strong>Information Technology (IT) Student</strong> passionate about software development and modern web technologies.
+                    </p>
+                    <p>
+                        I developed the <strong class="text-sky-600 dark:text-sky-400">Smart Food Tourism</strong> platform project, which connects food lovers and tourists with authentic regional culinary spots using interactive location mapping and food trail recommendations.
+                    </p>
+                    <p>
+                        I am actively learning full-stack web development, REST APIs, database management, and clean programming fundamentals to prepare for an exciting career as a Software Engineer.
+                    </p>
+
+                    <!-- Key Attributes Grid -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 text-sm font-medium">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap text-sky-500 text-lg"></i>
+                            <span>Information Technology Major</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-utensils text-sky-500 text-lg"></i>
+                            <span>Smart Food Tourism Project</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-laptop-code text-sky-500 text-lg"></i>
+                            <span>Full-Stack Learning</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-lightbulb text-sky-500 text-lg"></i>
+                            <span>Problem Solving & Curiosity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-sky-500 mb-2">IT Major</p>
+                        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Degree Focus</p>
+                        <p class="text-xs text-slate-500 mt-1">Information Technology</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-indigo-500 mb-2">Academic</p>
+                        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Projects</p>
+                        <p class="text-xs text-sky-500 font-bold mt-1">Smart Food Tourism</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-purple-500 mb-2">Active</p>
+                        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Student Learner</p>
+                        <p class="text-xs text-slate-500 mt-1">Web Development</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-emerald-500 mb-2">Aspiring</p>
+                        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Software Engineer</p>
+                        <p class="text-xs text-slate-500 mt-1">Ready to Grow</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-2">Technical Skills</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Knowledge & Tools</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Skills -->
+                <div class="glass-card p-8 rounded-2xl space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Frontend Web Dev</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>HTML5 / CSS3 / JavaScript</span>
+                                <span class="text-sky-500">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>React.js Fundamentals</span>
+                                <span class="text-sky-500">70%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>Tailwind CSS & Responsive UI</span>
+                                <span class="text-sky-500">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-sky-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="glass-card p-8 rounded-2xl space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Backend & Programming</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>Node.js / Express Basics</span>
+                                <span class="text-indigo-500">70%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>Python Basics</span>
+                                <span class="text-indigo-500">68%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>RESTful APIs & JSON</span>
+                                <span class="text-indigo-500">72%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 72%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database & Tools -->
+                <div class="glass-card p-8 rounded-2xl space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Databases & Tools</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>MongoDB / SQL Basics</span>
+                                <span class="text-purple-500">72%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>Git & GitHub Basics</span>
+                                <span class="text-purple-500">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-1">
+                                <span>Geolocation & Maps API</span>
+                                <span class="text-purple-500">70%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-100/60 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-2">Projects Work</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Featured Academic & Web Projects</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Main Featured Project: Smart Food Tourism -->
+                <div class="md:col-span-2 glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border-2 border-sky-500/40">
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+                        <div class="lg:col-span-6 bg-gradient-to-tr from-amber-500 via-orange-600 to-red-600 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+                            <div>
+                                <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wider mb-4">
+                                    🌟 Main Student Project
+                                </span>
+                                <h3 class="text-3xl sm:text-4xl font-extrabold mb-3">Smart Food Tourism Platform</h3>
+                                <p class="text-orange-100 text-base leading-relaxed">
+                                    An innovative web application developed to help travelers and food lovers discover authentic regional dishes, local food hubs, and culinary trails.
+                                </p>
+                            </div>
+                            <div class="pt-8">
+                                <div class="flex items-center space-x-3 text-sm font-semibold">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>IT Academic & Practical Web Project</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-6 p-8 space-y-6 flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Key Features & Functionality</h4>
+                                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-utensils text-orange-500 mt-1"></i>
+                                        <span><strong>Interactive Food Map:</strong> Discover local authentic food spots using interactive maps.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-star text-amber-500 mt-1"></i>
+                                        <span><strong>Culinary Recommendations:</strong> Browse regional dish specialties and customer reviews.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-mobile-screen text-sky-500 mt-1"></i>
+                                        <span><strong>Responsive UI Design:</strong> User-friendly experience on mobile devices and laptops.</span>
+                                    </li>
+                                </ul>
+
+                                <div class="pt-2">
+                                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase">Technologies Used</p>
+                                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                                        <span class="px-3 py-1 rounded-lg bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300">HTML / CSS / JS</span>
+                                        <span class="px-3 py-1 rounded-lg bg-sky-100 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300">React.js Basics</span>
+                                        <span class="px-3 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Node.js / Express</span>
+                                        <span class="px-3 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">Google Maps API</span>
+                                        <span class="px-3 py-1 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300">Tailwind CSS</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+                                <a href="https://github.com" target="_blank" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold text-sm hover:opacity-90 transition flex items-center gap-2">
+                                    <i class="fa-brands fa-github"></i> View Project Code
+                                </a>
+                                <span class="text-xs text-slate-500 font-medium">Developed by Thiruvasagam V</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Local Delicacy Finder -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div class="h-44 bg-gradient-to-tr from-sky-600 to-indigo-700 relative p-6 flex flex-col justify-between text-white overflow-hidden">
+                        <span class="inline-block self-start px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold">Web Application</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Local Delicacy & Food Spot Finder</h3>
+                            <p class="text-sky-100 text-xs">Interactive food explorer.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            A web application allowing users to search nearby food hubs, view dish information, and locate regional specialties.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Leaflet Maps API</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">HTML5/CSS3</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-sky-500">IT Student Project</span>
+                            <a href="https://github.com" target="_blank" class="text-slate-500 hover:text-slate-900 dark:hover:text-white text-lg"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Food Tourism Analytics Portal -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div class="h-44 bg-gradient-to-tr from-emerald-600 to-teal-700 relative p-6 flex flex-col justify-between text-white overflow-hidden">
+                        <span class="inline-block self-start px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold">Web Dashboard</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Food Tourism Analytics Portal</h3>
+                            <p class="text-teal-100 text-xs">Visual data portal for local food spots.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            A web dashboard concept displaying charts and metrics on popular local dishes and tourist preferences.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Chart.js</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Express</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-semibold text-emerald-500">IT Student Project</span>
+                            <a href="https://github.com" target="_blank" class="text-slate-500 hover:text-slate-900 dark:hover:text-white text-lg"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-2">Education Journey</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Academic Background</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Timeline items -->
+            <div class="max-w-4xl mx-auto relative border-l-2 border-slate-300 dark:border-slate-700 ml-4 sm:ml-32 space-y-12">
+                
+                <!-- Education Item 1 -->
+                <div class="relative pl-8 sm:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-slate-50 dark:ring-slate-950 group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 text-sm font-bold text-sky-500 mb-1 sm:mb-0">
+                        Present
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl shadow-sm space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Degree in Information Technology (IT)</h3>
+                            <span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-500 text-xs font-bold">IT Student</span>
+                        </div>
+                        <p class="text-sky-600 dark:text-sky-400 text-sm font-medium">Department of Information Technology</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Focusing on core Information Technology subjects including Web Development, Database Management Systems, Computer Networks, Software Engineering, and Data Structures. Developed practical web applications like the <strong>Smart Food Tourism</strong> platform.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-100/60 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-2">Let's Connect</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Get In Touch</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-500 to-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-card p-6 rounded-2xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Email Address</h4>
+                            <a href="mailto:vijaythiruvasagam007@gmail.com" class="text-sky-600 dark:text-sky-400 text-sm font-semibold hover:underline">
+                                vijaythiruvasagam007@gmail.com
+                            </a>
+                            <p class="text-xs text-slate-500 mt-1">Feel free to send a message</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Location</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm">Tamil Nadu, India</p>
+                            <p class="text-xs text-indigo-500 mt-1 font-medium">Open for Opportunities & Projects</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Current Status</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm">Information Technology Student</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" class="glass-card p-8 rounded-2xl space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Subject</label>
+                            <input type="text" required placeholder="Project Inquiry / Message" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                            <textarea rows="4" required placeholder="Hello Thiruvasagam, I would like to get in touch..." class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:outline-none transition"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl text-white font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 shadow-lg shadow-sky-500/25 transition-all duration-200">
+                            Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© <span id="year"></span> Thiruvasagam V. Information Technology Student Portfolio.</p>
+            <div class="flex items-center space-x-4">
+                <a href="#home" class="hover:text-sky-500">Back to Top <i class="fa-solid fa-arrow-up ml-1"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark/Light Theme Switcher
+        const themeToggleBtn = document.getElementById('themeToggle');
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Typewriter Effect for Hero Roles
+        const roles = ["Information Technology Student", "Aspiring Software Engineer", "Creator of Smart Food Tourism", "Web Developer"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', typeEffect);
+
+        // Contact Form Submission Handler
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for reaching out! Thiruvasagam V will get back to you shortly.');
+            contactForm.reset();
+        });
+    </script>
+
+</body>
+</html>
